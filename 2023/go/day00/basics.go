@@ -7,12 +7,8 @@ import (
 )
 
 func main() {
-	data, err := os.ReadFile("./input.txt")
-	if err != nil {
-		panic(err)
-	}
-	input := string(data)
-	lines := strings.Split(input, "\n")
+	data, _ := os.ReadFile("input.txt")
+	lines := strings.Split(string(data), "\n")
 	for _, line := range lines {
 		handleLine(line)
 	}
@@ -20,13 +16,10 @@ func main() {
 
 func handleLine(line string) {
 	numbers := strings.Split(line, " ")
-	var sum int64 = 0
+	sum := int(0)
 	for _, number := range numbers {
-		number, err := strconv.ParseInt(number, 10, 64)
-		if err != nil {
-			return
-		}
-		sum += number
+		number, _ := strconv.ParseInt(number, 10, 64)
+		sum += int(number)
 	}
 	println(sum)
 }
